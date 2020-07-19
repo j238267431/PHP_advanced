@@ -1,0 +1,8 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+        {% for item in goods %}
+            <p>{{item.name}}
+                <a href="?c=good&a=delete&id={{item.id}}">delete</a>
+            </p>
+        {% endfor %}
+{% endblock %}
