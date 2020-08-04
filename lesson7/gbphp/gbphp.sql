@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:8889
--- Время создания: Июл 23 2020 г., 14:58
+-- Время создания: Авг 04 2020 г., 12:19
 -- Версия сервера: 5.7.26
 -- Версия PHP: 7.4.2
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL DEFAULT '1',
+  `user_id` int(10) NOT NULL,
   `items` json NOT NULL,
   `status` enum('заказан','оплачен','доставлен','') NOT NULL DEFAULT 'заказан'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -38,11 +38,26 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `items`, `status`) VALUES
-(1, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'заказан'),
-(2, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'заказан'),
+(1, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'доставлен'),
+(2, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'оплачен'),
 (3, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'заказан'),
-(4, 1, '{\"21\": {\"id\": 21, \"qty\": 1, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}, \"22\": {\"id\": 22, \"qty\": 1, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}, \"23\": {\"id\": 23, \"qty\": 3, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}, \"24\": {\"id\": 24, \"qty\": 2, \"info\": \"товар2\", \"name\": \"товар2\", \"price\": \"1\"}}', 'заказан'),
-(5, 1, '{\"21\": {\"id\": 21, \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}, \"22\": {\"id\": 22, \"qty\": 3, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}, \"23\": {\"id\": 23, \"qty\": 6, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}, \"25\": {\"id\": 25, \"qty\": 1, \"info\": \"товар3\", \"name\": \"товар3\", \"price\": \"1009\"}, \"29\": {\"id\": 29, \"qty\": 3, \"info\": \"товар7\", \"name\": \"товар7\", \"price\": \"343\"}, \"42\": {\"id\": 42, \"qty\": 1, \"info\": \"info\", \"name\": \"123wq\", \"price\": \"123\"}}', 'заказан');
+(4, 1, '{\"21\": {\"id\": 21, \"qty\": 1, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}, \"22\": {\"id\": 22, \"qty\": 1, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}, \"23\": {\"id\": 23, \"qty\": 3, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}, \"24\": {\"id\": 24, \"qty\": 2, \"info\": \"товар2\", \"name\": \"товар2\", \"price\": \"1\"}}', 'оплачен'),
+(5, 1, '{\"21\": {\"id\": 21, \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}, \"22\": {\"id\": 22, \"qty\": 3, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}, \"23\": {\"id\": 23, \"qty\": 6, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}, \"25\": {\"id\": 25, \"qty\": 1, \"info\": \"товар3\", \"name\": \"товар3\", \"price\": \"1009\"}, \"29\": {\"id\": 29, \"qty\": 3, \"info\": \"товар7\", \"name\": \"товар7\", \"price\": \"343\"}, \"42\": {\"id\": 42, \"qty\": 1, \"info\": \"info\", \"name\": \"123wq\", \"price\": \"123\"}}', 'заказан'),
+(6, 1, 'null', 'заказан'),
+(7, 1, '{\"21\": {\"id\": \"21\", \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан'),
+(8, 1, '{\"21\": {\"id\": \"21\", \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан'),
+(9, 1, '{\"21\": {\"id\": \"21\", \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан'),
+(10, 1, '{\"22\": {\"id\": \"22\", \"qty\": 1, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}}', 'заказан'),
+(11, 1, '{\"21\": {\"id\": \"21\", \"qty\": 10, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}, \"26\": {\"id\": \"26\", \"qty\": 1, \"info\": \"товар4\", \"name\": \"товар4\", \"price\": \"989\"}, \"27\": {\"id\": \"27\", \"qty\": 10, \"info\": \"товар5\", \"name\": \"товар5\", \"price\": \"889\"}}', 'заказан'),
+(12, 1, '{\"21\": {\"id\": \"21\", \"qty\": 1, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан'),
+(13, 1, '{\"22\": {\"id\": \"22\", \"qty\": 1, \"info\": \"123\", \"name\": \"john\", \"price\": \"555\"}}', 'заказан'),
+(14, 1, '[]', 'заказан'),
+(15, 1, '{\"21\": {\"id\": \"21\", \"qty\": 3, \"info\": \"123321\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан'),
+(16, 16, '[]', 'заказан'),
+(17, 16, '{\"23\": {\"id\": \"23\", \"qty\": 3, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}}', 'заказан'),
+(18, 17, '{\"23\": {\"id\": \"23\", \"qty\": 3, \"info\": \"товар\", \"name\": \"товар\", \"price\": \"100\"}}', 'заказан'),
+(19, 1, '{\"21\": {\"id\": 21, \"qty\": 2, \"info\": \"123\", \"name\": \"123\", \"price\": \"123\"}}', 'доставлен'),
+(20, 20, '{\"21\": {\"id\": \"21\", \"qty\": 1, \"info\": \"rty3234\", \"name\": \"123wq\", \"price\": \"123123\"}}', 'заказан');
 
 -- --------------------------------------------------------
 
@@ -110,7 +125,7 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`id`, `name`, `price`, `info`, `img`) VALUES
-(21, '123wq', '123123', '123321', '123'),
+(21, '123wq', '123123', 'rty3234', '123'),
 (22, 'john', '555', '123', '123'),
 (23, 'товар', '100', 'товар', 'товар'),
 (24, 'товар2', '1', 'товар2', 'товар2'),
@@ -127,7 +142,20 @@ INSERT INTO `goods` (`id`, `name`, `price`, `info`, `img`) VALUES
 (39, 'Евгений', '123', '312', 'test.png'),
 (40, 'Евгений', '555', 'info', 'test.png'),
 (41, 'admin', '888', 'info', 'test.png'),
-(42, '123wq', '123', 'info', 'test.png');
+(42, '123wq', '123', 'info', 'test.png'),
+(43, '123wq', '555', '123', 'test.png'),
+(44, '333', '333', '333', 'test.png'),
+(45, 'john', '555', '123321', 'test.png'),
+(46, 'Евгений', '555', 'info', 'test.png'),
+(47, 'eee', '333', 'eee', 'test.png'),
+(48, '123wq', '123', '123321', 'test.png'),
+(49, 'john', '999', '123321', 'test.png'),
+(50, '123', '123', 'info', 'test.png'),
+(51, '123', '123', 'info', 'test.png'),
+(52, '123', '123', 'info', 'test.png'),
+(53, '123', '123', 'info', 'test.png'),
+(54, 'Евгений', '1233', 'rf2rfer', 'test.png'),
+(55, '123', '999', '123321', 'test.png');
 
 -- --------------------------------------------------------
 
@@ -148,8 +176,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fio`, `login`, `password`, `is_admin`) VALUES
-(13, 'name2', 'log', 'pass', 1),
-(15, 'Test', 'LoginTest', 'testPassword', 0);
+(16, 'Eugene', 'Eugene', '$2y$10$.VbF4M0patj1Lj4z/eXj5uv8pJy7IOMV1xCrtprVxV.CfqoPlvkaa', 1),
+(17, 'John', 'John', '$2y$10$5fGGx4AdipqFbeJWdOH6je5bv6qv6UWCWJiJDQxTIcBTlJxL1u20y', 0),
+(18, 'John', 'john', '$2y$10$JWfeRnhlMbqNkkXpV9YMD.EClbX4R3.AD3wJxMWN9SZQ.DFqkBdgy', 0),
+(19, 'John', 'john', '$2y$10$Xdy64yHyKk1Ygt/KCuPJkuQycNLB.iRX74GcUlYiG4IqAWU7GxgI.', 0),
+(20, 'Sarah', 'Sarah', '$2y$10$hGUpNkA95Q.SxduM7f5rKOg8/XiqfyyDarCafwZjs2C9fKG7UhBje', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -182,19 +213,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
