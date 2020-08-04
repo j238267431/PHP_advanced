@@ -1,0 +1,20 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %}
+    Добавление товара
+{% endblock %}
+
+{% block content %}
+{% set value = 'добавить'%}
+{% if good.id %}
+    {% set value = 'изменить' %}
+{% endif %}
+    <h1>Добавление товара</h1>
+    <form action="/good/add/?id={{good.id}}" method="post">
+        <input type="text" name="name" placeholder="name" value="{{ good.name }}">
+        <input type="text" name="price" placeholder="price" value="{{ good.price }}">
+        <input type="text" name="info" placeholder="info" value="{{ good.info }}">
+        <input type="submit" value = {{ value }}>
+    </form>
+{% endblock %}
+

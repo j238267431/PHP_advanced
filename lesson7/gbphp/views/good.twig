@@ -1,0 +1,13 @@
+{% extends 'layouts/main.twig' %}
+
+{% block title %}
+    {{ good.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ good.name }}</h1>
+    <p>
+        {{ good.info }}
+    </p>
+    <a href="/good/update/?id={{good.id}}"> изменить </a>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'layouts/main.twig' %}
+
+{% block userOrders %}
+ <h1>заказы</h1>
+    {%  for order in paginator.getItems()  %}
+        <p>
+         заказ № {{ order.id }}
+         статус заказа: <b>{{order.status}}</b>
+        </p>
+        <hr>
+    {% endfor %}
+    {% for key, url in paginator.getUrls() %}
+        <a href="{{url}}">{{ key }}</a>
+    {% endfor %}
+
+
+{% endblock %}

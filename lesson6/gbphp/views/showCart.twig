@@ -1,0 +1,20 @@
+{% extends 'layouts/main.twig' %}
+{% block title %}
+   Корзина
+{% endblock %} 
+{% block cart %}
+   <h1>Корзина</h1>
+   {% if not data.cart %}
+      корзина пуста
+      {% else %}
+      <a href="/cart/makeOrder"> оформить заказ </a>
+   {% endif %}
+   {% for item in data.cart %}
+      <p>название товара {{item.name}}</p>
+      <p> цена товара {{item.price}}</p>
+      <p> количество {{item.qty}}</p>
+      <p><a href = "/cart/add?id={{item.id}}">добавить</a></p>
+      <p><a href = "/cart/delete?id={{item.id}}">удалить</a></p>
+      <hr>
+   {% endfor %}
+{% endblock %}

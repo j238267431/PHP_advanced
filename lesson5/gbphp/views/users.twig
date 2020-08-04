@@ -1,0 +1,17 @@
+{% extends "layouts/main.twig" %}
+
+{% block content %}
+    {% set array = paginator.items %}
+{% if users %}
+    {% set array = users %}
+{% endif %}
+        {% for item in array %}
+            <p>{{item.fio}}
+                <a href="?c=user&a=delete&id={{item.id}}">delete</a>
+            </p>
+        {% endfor %}
+        {% for page in paginator.getUrls()%}
+            <a href="{{page}}">paginator.pages[0]</a>
+        {% endfor %}
+{% endblock %}
+
