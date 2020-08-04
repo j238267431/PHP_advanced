@@ -1,0 +1,95 @@
+<?php
+
+
+namespace App\entities;
+
+class User extends Entity
+{
+    private $id;
+    private $fio;
+    private $login;
+    private $password;
+    protected $baseRoot = '/user/all';
+
+
+    public function getVars()
+    {
+       return get_object_vars($this);
+    }
+
+    /**
+     * @return mixed
+     */
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getBaseRoot()
+    {
+        return $this->baseRoot;
+    }
+
+    public function getRepoName()
+    {
+        return 'userRepository';
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFio()
+    {
+        return $this->fio;
+    }
+
+    /**
+     * @param mixed $fio
+     */
+    public function setFio($fio): void
+    {
+        $this->fio = $fio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * @param mixed $login
+     */
+    public function setLogin($login): void
+    {
+        $this->login = $login;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+}
