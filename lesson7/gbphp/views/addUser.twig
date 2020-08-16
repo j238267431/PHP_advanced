@@ -1,0 +1,20 @@
+{% extends 'layouts/main.twig' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block auth %}
+{% set value = 'зарегистрировать'%}
+{% if user.id %}
+    {% set value = 'изменить' %}
+{% endif %}
+    <h1>Регистрация нового пользователя</h1>
+    <form action="/user/add/?id={{user.id}}" method="post">
+        <input type="text" name="fio" placeholder="fio" value="{{ user.fio }}">
+        <input type="text" name="login" placeholder="login" value="{{ user.login }}">
+        <input type="password" name="password" placeholder="password" value="{{ user.password }}">
+        <input type="submit" value = {{ value }}>
+    </form>
+{% endblock %}
+

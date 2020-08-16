@@ -1,0 +1,39 @@
+{% extends 'layouts/main.twig' %}
+
+
+{% block orders %}
+
+    <h1>заказы пользователей</h1>
+    {%  for order in paginator.getItems()  %}
+
+{% if order.status == "заказан" %}
+   {% set ordered = "selected" %} 
+   {% set payed = "" %}
+   {% set delivered = "" %}
+{% elseif order.status == "оплачен" %}
+   {% set ordered = "" %}
+   {% set payed = "selected" %}
+   {% set delivered = "" %}
+{% else %}
+   {% set ordered = "" %}
+   {% set payed = "" %}
+   {% set delivered = "selected" %}
+{% endif %}
+        <p>
+        заказ № {{ order.id }}
+        статус заказа: 
+        <form action ="/cart/changeStatus?id={{order.id}}" method = "POST">
+         <select name="status">
+            <option value="заказан" {{ordered}} >заказан</option>
+            <option value="оплачен" {{payed}} >оплачен</option>
+            <option value="доставлен" {{delivered}}>доставлен</option>
+         </select>
+         <input type="submit" value="изменить статус">
+         </form>
+        </p>
+        <hr>
+    {% endfor %}
+    {% for key, url in paginator.getUrls() %}
+        <a href="{{url}}">{{ key }}</a>
+    {% endfor %}
+{% endblock %}
